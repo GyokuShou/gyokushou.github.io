@@ -193,15 +193,18 @@
 <h3 id="3-重启服务"><a href="#3-重启服务" class="headerlink" title="3. 重启服务"></a>3. 重启服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service mysql restart</span><br></pre></td></tr></table></figure>
 <h3 id="4-创建用户"><a href="#4-创建用户" class="headerlink" title="4. 创建用户"></a>4. 创建用户</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">use mysql;</span><br><span class="line">create user &apos;[username]&apos;@&apos;[ip]&apos; identified by &apos;[password]&apos;;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p><code>ip</code>指访问提出访问的ip，用 <code>%</code> 指任意的访问地址</p>
+<p><code>ip</code>指提出访问的ip，用 <code>%</code> 指任意的访问地址</p>
 </blockquote>
 <h3 id="5-删除用户"><a href="#5-删除用户" class="headerlink" title="5. 删除用户"></a>5. 删除用户</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop user  &apos;[username]&apos;@&apos;[ip]&apos;</span><br></pre></td></tr></table></figure>
-<h3 id="6-修改密码"><a href="#6-修改密码" class="headerlink" title="6. 修改密码"></a>6. 修改密码</h3><pre><code>- mysql5.7前
+<h3 id="6-修改密码"><a href="#6-修改密码" class="headerlink" title="6. 修改密码"></a>6. 修改密码</h3><ul>
+<li><p>mysql5.7前</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set password = password(&apos;[password]&apos;);</span><br></pre></td></tr></table></figure>
-
-- mysql5.7后
+</li>
+<li><p>mysql5.7后</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">update user set authentication_string=password(&apos;[password]&apos;) where user=&apos;[username]&apos;;</span><br><span class="line"></span><br><span class="line"># 或</span><br><span class="line"></span><br><span class="line">ALTER USER &apos;[username]&apos;@&apos;[ip]&apos; IDENTIFIED WITH mysql_native_password BY &apos;[password]&apos;;</span><br></pre></td></tr></table></figure>
-</code></pre><h3 id="7-授权"><a href="#7-授权" class="headerlink" title="7. 授权"></a>7. 授权</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grant [permission] on [database].[table]  to &apos;[username]&apos;@&apos;[ip]&apos;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="7-授权"><a href="#7-授权" class="headerlink" title="7. 授权"></a>7. 授权</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grant [permission] on [database].[table]  to &apos;[username]&apos;@&apos;[ip]&apos;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>grant all on <em>.</em> to ‘dd‘@’localhost’;<br><code>*.*</code> 为所有数据库的所有表，第一个<code>*</code>指数据库，第二个<code>*</code>指该数据库中的表，<code>all</code>为所有权限，包括（<code>select</code>, <code>update</code>, <code>delete</code>, <code>alter</code>, <code>insert</code>）</p>
 </blockquote>
@@ -232,6 +235,43 @@
 <script src="https://cdn.bootcss.com/social-share.js/1.0.16/js/social-share.min.js" async></script>
   
 
+  
+    <div id="reward">
+  
+    <p id="reward-meta">知识 & 情怀 | 二者兼得</p>
+  
+  <button id="reward-btn">
+    
+    <span>投食</span>
+  </button>
+  <div id="reward-qrcode">
+    
+      <div class="reward-qrcode--container">
+        <img class="qrcode-img" src="/images/wechat.png" alt="微信扫一扫, 向我投食">
+        <p class="qrcode-meta">微信扫一扫, 向我投食</p>
+      </div>
+    
+      <div class="reward-qrcode--container">
+        <img class="qrcode-img" src="/images/alipay.png" alt="支付宝扫一扫, 向我投食">
+        <p class="qrcode-meta">支付宝扫一扫, 向我投食</p>
+      </div>
+    
+  </div>
+
+</div>
+
+<script>
+  (() => {
+    let button = document.querySelector('#reward-btn'),
+      qrcode = document.querySelector('#reward-qrcode'),
+      display = false;
+    
+    button.addEventListener('click', () => {
+      qrcode.style.display = display ? 'none' : 'block'
+      display = !display
+    }, false)
+  })()
+</script>
   
 
   <div class="article-footer">
