@@ -8,12 +8,12 @@
   
   
   
-  <title>Ubuntu16下的Python环境搭建 | Gin的碎碎念</title>
+  <title>mysql安装配置 | Gin的碎碎念</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="配置,ubuntu,python,">
+    <meta name="keywords" content="配置,mysql,">
   
 
   <script>
@@ -166,7 +166,7 @@
 
 <div class="post">
   <h1 class="article-title">
-    <span>Ubuntu16下的Python环境搭建</span>
+    <span>mysql安装配置</span>
   </h1>
   <div class="article-top-meta">
     <span>
@@ -188,110 +188,26 @@
 
   <div class="article-content">
     <div class="markdown-body">
-      <h2 id="一、前置准备"><a href="#一、前置准备" class="headerlink" title="一、前置准备"></a>一、前置准备</h2><blockquote>
-<p>安装相关软件和依赖</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install man gcc  make  lsof ssh openssl tree vim dnsutils iputils-ping -y</span><br><span class="line">sudo apt-get install net-tools psmisc sysstat curl telnet traceroute wget libbz2-dev libpcre3 -y</span><br><span class="line">sudo apt-get install libpcre3-dev libc6-dev libreadline-dev libsqlite3-dev libssl-dev llvm build-essential nginx -y</span><br><span class="line">sudo apt-get install zlib1g-dev git mysql-server mysql-client zip  p7zip -y</span><br></pre></td></tr></table></figure>
-<h2 id="二、配置python虚拟开发环境"><a href="#二、配置python虚拟开发环境" class="headerlink" title="二、配置python虚拟开发环境"></a>二、配置python虚拟开发环境</h2><ol>
-<li>virtualenv和virtualenvwrapper安装</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install --upgrade pip</span><br><span class="line">pip install virtualenv</span><br><span class="line">pip install virtualenvwrapper</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>配置环境变量</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">type virtualenvwrapper.sh</span><br><span class="line"># 查找 virtualenvwrapper.sh 路径</span><br><span class="line">vi ~/.bashrc</span><br><span class="line">	export WORKON_HOME=~/.virtualenvs</span><br><span class="line">	source [/home/ubuntu/.local/bin/virtualenvwrapper.sh]</span><br></pre></td></tr></table></figure>
+      <h1 id="数据库配置"><a href="#数据库配置" class="headerlink" title="数据库配置"></a>数据库配置</h1><h3 id="1-备份配置文件"><a href="#1-备份配置文件" class="headerlink" title="1. 备份配置文件"></a>1. 备份配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /etc/mysql/mysql.conf.d/mysqld.cnf /etc/mysql/mysql.conf.d/mysqld.cnf.bak</span><br></pre></td></tr></table></figure>
+<h3 id="2-修改配置文件，允许远程访问"><a href="#2-修改配置文件，允许远程访问" class="headerlink" title="2. 修改配置文件，允许远程访问"></a>2. 修改配置文件，允许远程访问</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line">user            = mysql</span><br><span class="line">pid-file        = /var/run/mysqld/mysqld.pid</span><br><span class="line">socket          = /var/run/mysqld/mysqld.sock</span><br><span class="line">port            = 3306</span><br><span class="line">basedir         = /usr</span><br><span class="line">datadir         = /var/lib/mysql</span><br><span class="line">tmpdir          = /tmp</span><br><span class="line">lc-messages-dir = /usr/share/mysql</span><br><span class="line">skip-external-locking</span><br><span class="line">character_set_server = utf8  # 在此处添加</span><br><span class="line"></span><br><span class="line">bind-address         = 127.0.0.1  # 将这句语句注释</span><br></pre></td></tr></table></figure>
+<h3 id="3-重启服务"><a href="#3-重启服务" class="headerlink" title="3. 重启服务"></a>3. 重启服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service mysql restart</span><br></pre></td></tr></table></figure>
+<h3 id="4-创建用户"><a href="#4-创建用户" class="headerlink" title="4. 创建用户"></a>4. 创建用户</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">use mysql;</span><br><span class="line">create user &apos;[username]&apos;@&apos;[ip]&apos; identified by &apos;[password]&apos;;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>将 <code>type</code> 所得路径添加至source参数</p>
+<p><code>ip</code>指访问提出访问的ip，用 <code>%</code> 指任意的访问地址</p>
 </blockquote>
-<ol start="3">
-<li>创建虚拟环境目录并更新环境变量</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/.virtualenvs</span><br><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li><p>使用虚拟环境</p>
-<ul>
-<li><p>创建虚拟环境</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkvirtualenv [python_version] vir_name</span><br></pre></td></tr></table></figure>
+<h3 id="5-删除用户"><a href="#5-删除用户" class="headerlink" title="5. 删除用户"></a>5. 删除用户</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop user  &apos;[username]&apos;@&apos;[ip]&apos;</span><br></pre></td></tr></table></figure>
+<h3 id="6-修改密码"><a href="#6-修改密码" class="headerlink" title="6. 修改密码"></a>6. 修改密码</h3><pre><code>- mysql5.7前
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set password = password(&apos;[password]&apos;);</span><br></pre></td></tr></table></figure>
+
+- mysql5.7后
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">update user set authentication_string=password(&apos;[password]&apos;) where user=&apos;[username]&apos;;</span><br><span class="line"></span><br><span class="line"># 或</span><br><span class="line"></span><br><span class="line">ALTER USER &apos;[username]&apos;@&apos;[ip]&apos; IDENTIFIED WITH mysql_native_password BY &apos;[password]&apos;;</span><br></pre></td></tr></table></figure>
+</code></pre><h3 id="7-授权"><a href="#7-授权" class="headerlink" title="7. 授权"></a>7. 授权</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grant [permission] on [database].[table]  to &apos;[username]&apos;@&apos;[ip]&apos;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>mkvirtualenv -p /python_path vir_name</p>
+<p>grant all on <em>.</em> to ‘dd‘@’localhost’;<br><code>*.*</code> 为所有数据库的所有表，第一个<code>*</code>指数据库，第二个<code>*</code>指该数据库中的表，<code>all</code>为所有权限，包括（<code>select</code>, <code>update</code>, <code>delete</code>, <code>alter</code>, <code>insert</code>）</p>
 </blockquote>
-</li>
-<li><p>进入虚拟环境</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">workon vir_name</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>切出虚拟环境</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deactivate</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ol>
-<pre><code>- 查看所有虚拟环境
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">workon</span><br></pre></td></tr></table></figure>
-</code></pre><blockquote>
-<p>注意：如果virtualenvwrapper安装报错，使用 <code>sudo apt install virtualenvwrapper</code> 安装</p>
-</blockquote>
-<h2 id="三、配置pyenv"><a href="#三、配置pyenv" class="headerlink" title="三、配置pyenv"></a>三、配置pyenv</h2><p>配置好virtualenv和virtualenvwrapper后，可以使用pyenv管理python版本</p>
-<blockquote>
-<p>此步骤非必须，配置后使用 <code>mkvirtualenv</code> 创建虚拟环境时请务必指定python版本</p>
-</blockquote>
-<ol>
-<li>下载</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/pyenv/pyenv.git ~/.pyenv</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>配置环境变量</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo &apos;export PYENV_ROOT=&quot;$HOME/.pyenv&quot;&apos; &gt;&gt; ~/.bashrc</span><br><span class="line">echo &apos;export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot;&apos; &gt;&gt; ~/.bashrc</span><br><span class="line">echo &apos;eval &quot;$(pyenv init -)&quot;&apos; &gt;&gt; ~/.bashrc</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>配置立即生效</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>更新pyenv</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv update</span><br></pre></td></tr></table></figure>
-<ol start="5">
-<li>创建cache路径</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/.pyenv/cache</span><br></pre></td></tr></table></figure>
-<ol start="6">
-<li>下载python</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://www.python.org/ftp/python/[3.6.5]/Python-[3.6.5].tar.xz -P  ~/.pyenv/cache/</span><br></pre></td></tr></table></figure>
-<ol start="7">
-<li>安装python</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv install [3.6.5] -v</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>版本需对应，否则会从github下载指定版本号</p>
-</blockquote>
-<ol start="8">
-<li>更新pyenv数据库</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv rehash</span><br></pre></td></tr></table></figure>
-<ol start="9">
-<li>列出所有已安装的版本</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv versions</span><br></pre></td></tr></table></figure>
-<ol start="10">
-<li>版本切换</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv global [3.6.5]</span><br></pre></td></tr></table></figure>
-<ol start="11">
-<li>删除指定的python版本</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv uninstall [3.6.5]</span><br></pre></td></tr></table></figure>
-<h2 id="四、配置python和pip"><a href="#四、配置python和pip" class="headerlink" title="四、配置python和pip"></a>四、配置python和pip</h2><blockquote>
-<p>如果第二、三步没有问题，请跳过此步骤，以下操作可能导致不可预测的错误</p>
-</blockquote>
-<ul>
-<li><p>配置pip3</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install python3-pip -y</span><br><span class="line">pip3 install --upgrade pip</span><br><span class="line">pip3 --version</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果报错与 <code>__main__</code> 有关，请按以下方式进行修改</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改前</span></span><br><span class="line">form pip <span class="keyword">import</span> main</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">	sys.exit(main())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改后</span></span><br><span class="line"><span class="keyword">from</span> pip <span class="keyword">import</span> __main__</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">	sys.exit(__main__._main())</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+<h3 id="8-回收授权"><a href="#8-回收授权" class="headerlink" title="8. 回收授权"></a>8. 回收授权</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">revoke select on [database].[table] from &apos;[username]&apos;@&apos;[ip]&apos;;</span><br></pre></td></tr></table></figure>
+<h3 id="9-刷新，立即生效"><a href="#9-刷新，立即生效" class="headerlink" title="9. 刷新，立即生效"></a>9. 刷新，立即生效</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+<h3 id="10-数据库备份和恢复"><a href="#10-数据库备份和恢复" class="headerlink" title="10. 数据库备份和恢复"></a>10. 数据库备份和恢复</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -uroot -p [database] &gt; ~/file_name.sql;</span><br><span class="line"># 备份</span><br><span class="line"></span><br><span class="line">mysql -uroot -p [database] &lt; ~/file_name.sql;</span><br><span class="line"># 恢复</span><br></pre></td></tr></table></figure>
     </div>
   </div>
   
@@ -302,7 +218,7 @@
         
           本文作者 : Gin GyokuShou <br>
         
-        原文链接 : <a href>https://gyokushou.xyz/2019/05/15/Ubuntu16下的Python环境搭建/</a><br>
+        原文链接 : <a href>https://gyokushou.xyz/2019/05/15/mysql安装配置/</a><br>
         版权声明 : 本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
         </blockquote>
       </div>
@@ -325,14 +241,8 @@
           <i class="iconfont icon-06tags"></i>标签: 
           
           <span class="span--tag">
-            <a href="/tags/ubuntu/">
-              #ubuntu
-            </a>
-          </span>
-          
-          <span class="span--tag">
-            <a href="/tags/python/">
-              #python
+            <a href="/tags/mysql/">
+              #mysql
             </a>
           </span>
           
@@ -354,12 +264,12 @@
 
   <nav class="post-navigation">
     
-    
-      <div class="nav-next">
-        下一篇:
-        <a href="/2019/05/15/mysql安装配置/" target="_self">mysql安装配置</a>
-        <i class="iconfont icon-next"></i>
+      <div class="nav-pre">
+        <i class="iconfont icon-prev"></i>
+        上一篇:
+        <a href="/2019/05/15/Ubuntu16下的Python环境搭建/" target="_self">Ubuntu16下的Python环境搭建</a>
       </div>
+    
     
   </nav>
 
