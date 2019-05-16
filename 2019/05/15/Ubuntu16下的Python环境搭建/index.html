@@ -188,11 +188,11 @@
 
   <div class="article-content">
     <div class="markdown-body">
-      <h2 id="一、前置准备"><a href="#一、前置准备" class="headerlink" title="一、前置准备"></a>一、前置准备</h2><blockquote>
+      <h2 id="1-前置准备"><a href="#1-前置准备" class="headerlink" title="1 前置准备"></a>1 前置准备</h2><blockquote>
 <p>安装相关软件和依赖</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install man gcc  make  lsof ssh openssl tree vim dnsutils iputils-ping -y</span><br><span class="line">sudo apt-get install net-tools psmisc sysstat curl telnet traceroute wget libbz2-dev libpcre3 -y</span><br><span class="line">sudo apt-get install libpcre3-dev libc6-dev libreadline-dev libsqlite3-dev libssl-dev llvm build-essential nginx -y</span><br><span class="line">sudo apt-get install zlib1g-dev git mysql-server mysql-client zip  p7zip -y</span><br></pre></td></tr></table></figure>
-<h2 id="二、配置python虚拟开发环境"><a href="#二、配置python虚拟开发环境" class="headerlink" title="二、配置python虚拟开发环境"></a>二、配置python虚拟开发环境</h2><ol>
+<h2 id="2-配置python虚拟开发环境"><a href="#2-配置python虚拟开发环境" class="headerlink" title="2 配置python虚拟开发环境"></a>2 配置python虚拟开发环境</h2><ol>
 <li>virtualenv和virtualenvwrapper安装</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install --upgrade pip</span><br><span class="line">pip install virtualenv</span><br><span class="line">pip install virtualenvwrapper</span><br></pre></td></tr></table></figure>
@@ -230,7 +230,7 @@
 </code></pre><blockquote>
 <p>注意：如果virtualenvwrapper安装报错，使用 <code>sudo apt install virtualenvwrapper</code> 安装</p>
 </blockquote>
-<h2 id="三、配置pyenv"><a href="#三、配置pyenv" class="headerlink" title="三、配置pyenv"></a>三、配置pyenv</h2><p>配置好virtualenv和virtualenvwrapper后，可以使用pyenv管理python版本</p>
+<h2 id="3-配置pyenv"><a href="#3-配置pyenv" class="headerlink" title="3 配置pyenv"></a>3 配置pyenv</h2><p>配置好virtualenv和virtualenvwrapper后，可以使用pyenv管理python版本</p>
 <blockquote>
 <p>此步骤非必须，配置后使用 <code>mkvirtualenv</code> 创建虚拟环境时请务必指定python版本</p>
 </blockquote>
@@ -281,7 +281,7 @@
 <li>删除指定的python版本</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv uninstall [3.6.5]</span><br></pre></td></tr></table></figure>
-<h2 id="四、配置python和pip"><a href="#四、配置python和pip" class="headerlink" title="四、配置python和pip"></a>四、配置python和pip</h2><blockquote>
+<h2 id="4-配置python和pip"><a href="#4-配置python和pip" class="headerlink" title="4 配置python和pip"></a>4 配置python和pip</h2><blockquote>
 <p>如果第二、三步没有问题，请跳过此步骤，以下操作可能导致不可预测的错误</p>
 </blockquote>
 <ul>
