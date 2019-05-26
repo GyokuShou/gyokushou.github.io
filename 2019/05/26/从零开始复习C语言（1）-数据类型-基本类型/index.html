@@ -8,12 +8,12 @@
   
   
   
-  <title>2019半年总结 | Gin的碎碎念</title>
+  <title>从零开始复习C语言（1）-数据类型-基本类型 | Gin的碎碎念</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="札记,总结,">
+    <meta name="keywords" content="笔记,C,">
   
 
   <script>
@@ -166,18 +166,18 @@
 
 <div class="post">
   <h1 class="article-title">
-    <span>2019半年总结</span>
+    <span>从零开始复习C语言（1）-数据类型-基本类型</span>
   </h1>
   <div class="article-top-meta">
     <span>
       发布 : 
-      2019-05-22
+      2019-05-26
     </span>
     
       <span>
         分类 : 
-          <a href="/categories/札记/">
-            札记
+          <a href="/categories/笔记/">
+            笔记
           </a>
       </span>
     
@@ -188,19 +188,93 @@
 
   <div class="article-content">
     <div class="markdown-body">
-      <h2 id="卷首"><a href="#卷首" class="headerlink" title="卷首"></a>卷首</h2><p>选择在5月做半年总结纯粹就是因为，在上上周毕业答辩结束后，大学的时光宣布告一段落。</p>
-<p>当然也可以说这就是我的大学总结。</p>
-<p>曾经我的室友笑称我的大学就是“做表”和“查寝”，说实话这两样真的差不多是贯穿我的整个大学，我没办法反驳他什么。所以后来我试图从这两样中摆脱出来，当然这半年来的努力就是为了这个。</p>
-<h2 id="年半"><a href="#年半" class="headerlink" title="年半"></a>年半</h2><p>辛苦的这半年也是有收获的，毕竟大学期间除了最为基础的编程语法以外，并没有学到什么编程知识。</p>
-<p>从这个角度来说，这半年以来确实收获满满，毕竟每天还是很充实的。</p>
-<p>另一方面最为重要的是，这半年来，开始静心学习了。</p>
-<p>从大二以后，基本都没什么心思在学习上面，不是在做表就是在查寝又或者开会。上课期间时不时收到的通知，在一段时间的折磨后跟不上老师的进度就会自然而然地开始放纵。最后就会沉溺于60分万岁的蜜汁快感中。</p>
-<p>虽然我的的确确不是一个爱学习的好孩纸，但是成绩直线下降的感觉还是很让人不爽。也有试图过好好学习，一方面对那些文科类的课程并不上心，另一方面也是一直很浮躁，最后还是破罐子破摔。</p>
-<h2 id="补缺"><a href="#补缺" class="headerlink" title="补缺"></a>补缺</h2><p>同样因为越来越咸鱼，越来越咕咕咕，那些想要参加的比赛最后沦为陪跑。</p>
-<p>一些想要做成的东西最后半途而废。</p>
-<p>也因为自己的状态错过了很多好的机会。</p>
-<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>半年就这么过去啦，希望今后也能一直沙雕一直努力哇。</p>
-<p>向着目标，葱鸭！</p>
+      <h2 id="1-数据的表现形式"><a href="#1-数据的表现形式" class="headerlink" title="1 数据的表现形式"></a>1 数据的表现形式</h2><p>在计算机高级语言中，数据有两种表现形式：</p>
+<ul>
+<li>常量</li>
+<li>变量</li>
+</ul>
+<p>常量为不可变的量，通常为自然数或计算机符号，可以直接使用。</p>
+<p>变量为可变量，须<strong>先声明，后使用</strong>。</p>
+<h2 id="2-常量"><a href="#2-常量" class="headerlink" title="2 常量"></a>2 常量</h2><p>常量分为以下5种：</p>
+<h3 id="2-1-整型常量"><a href="#2-1-整型常量" class="headerlink" title="2.1 整型常量"></a>2.1 整型常量</h3><p>整数</p>
+<h3 id="2-2-实型常量"><a href="#2-2-实型常量" class="headerlink" title="2.2 实型常量"></a>2.2 实型常量</h3><ol>
+<li><p>十进制小数</p>
+</li>
+<li><p>指数</p>
+<blockquote>
+<p>在C语言中，指数使用 <code>e</code> 或 <code>E</code> 代表指数。<code>e/E</code> 前必须有数字，<code>e/E</code> 后必须为整数。</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="2-3-字符常量"><a href="#2-3-字符常量" class="headerlink" title="2.3 字符常量"></a>2.3 字符常量</h3><p>由 <code>&#39;&#39;</code> 单引号括起来的<strong>一个</strong>字符。</p>
+<ol>
+<li><p>普通字符</p>
+<blockquote>
+<p><code>A</code>, <code>b</code>, <code>#</code> 都是字符常量，也可以用 <code>ASKII</code> 码的数字表示。</p>
+</blockquote>
+</li>
+<li><p>转义字符</p>
+<blockquote>
+<p>使用 <code>\</code> 开头的字符为转义字符，常用转义字符见下表。<br> | 转义字符 | 字符值 | 输出结果 |<br> | ——– | —— | ——– |<br> | <code>\&#39;</code> | 单引号 | <code>&#39;</code> |<br> | <code>\&quot;</code> | 双引号 | <code>&quot;</code> |<br> | <code>\?</code> | 问号 | <code>?</code> |<br> | <code>\\</code> | 反斜线 | <code>\</code> |<br> | <code>\a</code> | 警告 | 产生声音或视觉信号 |<br> | <code>\b</code> | 退格 | 删除前一个字符 |<br> | <code>\f</code> | 换页 | 当前位置移至下页开头 |<br> | <code>\n</code> | 换行 | 当前位置移至下行开头 |<br> | <code>\r</code> | 回车 | 当前位置移至本行开头 |<br> | <code>\t</code> | 水平制表符 | 当前位置移至下一个tab位置 |<br> | <code>\0</code> | 与该8进制码对应的ASKII字符 |<br> | <code>\x</code> | 与该16进制码对应的ASKII字符 |</p>
+</blockquote>
+<h3 id="2-4-字符串常量"><a href="#2-4-字符串常量" class="headerlink" title="2.4 字符串常量"></a>2.4 字符串常量</h3></li>
+</ol>
+<p>由 <code>&quot;&quot;</code> 双引号括起来的<strong>若干个</strong>字符，双引号内可以是一个字符。</p>
+<h3 id="2-5-符号常量"><a href="#2-5-符号常量" class="headerlink" title="2.5 符号常量"></a>2.5 符号常量</h3><p>使用 <code>#define</code> 指令，指定一个符号代称一个常量。</p>
+<blockquote>
+<p><code>#define PI 3.14</code><br>符号常量不是变量，不占内存，只是一个临时符号，用于替换，在预编译后结束生命周期。</p>
+</blockquote>
+<h2 id="3-变量"><a href="#3-变量" class="headerlink" title="3 变量"></a>3 变量</h2><p>在编译过程中，编译器会为变量分配一个地址，从变量中取值实际上就是通过变量名找到相对应的内存地址，从该内存地址对应的存储单元中取值。</p>
+<h3 id="3-1-常变量"><a href="#3-1-常变量" class="headerlink" title="3.1 常变量"></a>3.1 常变量</h3><p>C99允许使用常变量。</p>
+<p>常变量有类型，占内存，不可变。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> a=<span class="number">3</span>;</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-2-标识符"><a href="#3-2-标识符" class="headerlink" title="3.2 标识符"></a>3.2 标识符</h3><p>对变量，符号常量名，函数，数组，类型等命名的有效字符序列统称表标识符。即对象的名称。</p>
+<p>C语言规定标识符只能由数组字母下划线组成，且不允许以数字开头。</p>
+<p>同样，命名时应避开关键字。</p>
+<p>C语言<strong>严格区分</strong>大小写，所以 <code>a</code> 和 <code>A</code> 是两个不同的变量。</p>
+<h3 id="3-3-变量数据类型"><a href="#3-3-变量数据类型" class="headerlink" title="3.3 变量数据类型"></a>3.3 变量数据类型</h3><p><img src="https://gitee.com/gyokushou/pool/raw/84d8c9128c089577925aefb59cb70cb8bc7ed5f9/5/26/C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.png" alt="C数据类型"></p>
+<p>带 <code>*</code> 为C99新增类型。</p>
+<h3 id="3-4-基本类型"><a href="#3-4-基本类型" class="headerlink" title="3.4 基本类型"></a>3.4 基本类型</h3><h4 id="3-4-1-整型"><a href="#3-4-1-整型" class="headerlink" title="3.4.1 整型"></a>3.4.1 整型</h4><h5 id="3-4-1-1-基本整型"><a href="#3-4-1-1-基本整型" class="headerlink" title="3.4.1.1 基本整型"></a>3.4.1.1 基本整型</h5><p>基本整型 <code>int</code> 通常为2或4个字节，由编译器决定。</p>
+<p>以4字节为例，在内存中存储一个整型数据 <code>5</code> 为：<br><code>00000000 00000000 00000000 00000101</code> 形式。</p>
+<p>如果进行取反操作如 <code>-5</code> ，即首先获取 <code>5</code> 的补码，而后对值取反，可得：<br><code>11111111 11111111 11111111 11111010</code> 。</p>
+<p>再对所得结果 <code>+1</code> 即可得到 <code>-5</code> 的补码：<br><code>11111111 11111111 11111111 11111011</code> 。</p>
+<blockquote>
+<p>最左一位为 <code>0</code> 表示正数，最左一位为 <code>1</code> 表示负数。</p>
+</blockquote>
+<h5 id="3-4-1-2-短、长、双长整型"><a href="#3-4-1-2-短、长、双长整型" class="headerlink" title="3.4.1.2 短、长、双长整型"></a>3.4.1.2 短、长、双长整型</h5><ol>
+<li><p>短整型<br> <code>short int</code> 或 <code>short</code> ，通常为2个字节。</p>
+</li>
+<li><p>长整型<br> <code>long int</code> 或 <code>long</code> ，通常为4个字节。</p>
+</li>
+<li><p>双长整型<br> <code>long long int</code> 或 <code>long long</code> ，C99新增类型，一般分配8个字节。</p>
+</li>
+</ol>
+<h5 id="3-4-1-3-整型的基本说明"><a href="#3-4-1-3-整型的基本说明" class="headerlink" title="3.4.1.3 整型的基本说明"></a>3.4.1.3 整型的基本说明</h5><ol>
+<li><p>字节<br> 1字节存储8位，在4字节整型类型时，可以存储的最大值为：<br> <code>01111111 11111111 11111111 11111111</code> 即 <code>2**31-1</code><br> 最大容纳范围是：<code>-2^31~2^31-1</code> 。</p>
+</li>
+<li><p>类型长度<br> C标准没有明确规定各种类型占用存储单元的长度，只需要符合以下规则即可。<br> sizeof(short) ≤ sizeof(int) ≤ sizeof(long) ≤ sizeof(long long)</p>
+</li>
+<li><p>去除符号<br> 使用修饰符 <code>unsigned</code> 去除符号，使用unsigned后变量不可存储负数，取值范围为原最大值的2倍。</p>
+<blockquote>
+<p>只有整型才可以使用 <code>signed</code> 或 <code>unsigned</code> 进行修饰。<br>无符号整型使用 <code>%u</code> 输出。</p>
+</blockquote>
+</li>
+</ol>
+<h4 id="3-4-2-浮点型"><a href="#3-4-2-浮点型" class="headerlink" title="3.4.2 浮点型"></a>3.4.2 浮点型</h4><p>由于小数点的位置可以浮动，所以实数的指数形式称为浮点数。</p>
+<p>以 <code>3.1415926</code> 为例，可以看做 <code>0.31415926*10^1</code> 即 <code>0.31415926e001</code>，称为规范化指数形式。</p>
+<p>C标准没有规定指数部分和小数部分的具体范围，但是可以肯定的是：小数部分占位越多，数值越精确；指数部分占位越多，能表示的数值范围越大。</p>
+<p>浮点数分为3种，<code>float</code>、<code>double</code> 和 <code>long double</code> 。</p>
+<blockquote>
+<p>C语言中的浮点型常量，默认采用 <code>double</code> 类型。</p>
+<blockquote>
+<p>在浮点常量后添加 <code>f</code> 如 <code>3.14f</code> 即按照 <code>float</code> 类型处理，编译时不弹出警告。<br>在浮点常量后添加 <code>l</code> 或 <code>L</code> 如 <code>3.14L</code> 即按照 <code>long double</code> 类型处理。</p>
+</blockquote>
+</blockquote>
+<h4 id="3-4-3-字符型"><a href="#3-4-3-字符型" class="headerlink" title="3.4.3 字符型"></a>3.4.3 字符型</h4><p>字符型以整数形式表示 <code>ASKII</code> 码值，以字符表示实际字符。</p>
+<p>如果将一个负数赋值给字符型变量是<strong>合法</strong>的，如 <code>signed char c = -5;</code> 。如果在定义变量时不添加 <code>signed</code> 或 <code>unsigned</code> ，处理结果由编译器决定。</p>
+<blockquote>
+<p>有符号字符类型实际有效范围为 <code>0~127</code> 。<br>无符号字符类型范围为 <code>0~255</code> 。</p>
+</blockquote>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>《C程序设计（第4版）》谭浩强</p>
     </div>
   </div>
   
@@ -211,7 +285,7 @@
         
           本文作者 : Gin GyokuShou <br>
         
-        原文链接 : <a href>https://gyokushou.xyz/2019/05/22/2019半年总结/</a><br>
+        原文链接 : <a href>https://gyokushou.xyz/2019/05/26/从零开始复习C语言（1）-数据类型-基本类型/</a><br>
         版权声明 : 本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
         </blockquote>
       </div>
@@ -234,8 +308,8 @@
           <i class="iconfont icon-06tags"></i>标签: 
           
           <span class="span--tag">
-            <a href="/tags/总结/">
-              #总结
+            <a href="/tags/C/">
+              #C
             </a>
           </span>
           
@@ -260,15 +334,9 @@
       <div class="nav-pre">
         <i class="iconfont icon-prev"></i>
         上一篇:
-        <a href="/2019/05/16/Mysql存储过程/" target="_self">Mysql存储过程</a>
+        <a href="/2019/05/22/2019半年总结/" target="_self">2019半年总结</a>
       </div>
     
-    
-      <div class="nav-next">
-        下一篇:
-        <a href="/2019/05/26/从零开始复习C语言（1）-数据类型-基本类型/" target="_self">从零开始复习C语言（1）-数据类型-基本类型</a>
-        <i class="iconfont icon-next"></i>
-      </div>
     
   </nav>
 
