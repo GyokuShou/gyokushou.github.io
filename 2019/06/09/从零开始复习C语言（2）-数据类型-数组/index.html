@@ -186,7 +186,36 @@
 
   <div class="article-content">
     <div class="markdown-body">
-      <h2 id="1-一维数组"><a href="#1-一维数组" class="headerlink" title="1 一维数组"></a>1 一维数组</h2>
+      <h2 id="1-一维数组"><a href="#1-一维数组" class="headerlink" title="1 一维数组"></a>1 一维数组</h2><h3 id="1-1-定义形式"><a href="#1-1-定义形式" class="headerlink" title="1.1 定义形式"></a>1.1 定义形式</h3><p><code>类型符 数组名[常量表达式];</code><br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> nums[<span class="number">10</span>];</span><br></pre></td></tr></table></figure></p>
+<p><strong>*</strong> 注：不能企图在程序中临时划定数组大小。</p>
+<h3 id="1-2-引用和初始化"><a href="#1-2-引用和初始化" class="headerlink" title="1.2 引用和初始化"></a>1.2 引用和初始化</h3><h4 id="1-2-1-引用"><a href="#1-2-1-引用" class="headerlink" title="1.2.1 引用"></a>1.2.1 引用</h4><p>数组名[下标]<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nums[<span class="number">5</span>]  <span class="comment">// 引用下标为 `5` (第6个) 的元素</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="1-2-2-初始化"><a href="#1-2-2-初始化" class="headerlink" title="1.2.2 初始化"></a>1.2.2 初始化</h4><ul>
+<li>在定义时为全部元素赋初值  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> nums[<span class="number">10</span>] = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>在定义时为部分元素赋初值</p>
+  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> nums[<span class="number">10</span>] = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在定义时将所有元素赋值为 <code>0</code></p>
+  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> nums[<span class="number">10</span>] = &#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>&#125;;</span><br><span class="line">或</span><br><span class="line"><span class="keyword">int</span> nums[<span class="number">10</span>] = &#123;<span class="number">0</span>&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对已确定个数的数组可忽略常量表达式</p>
+  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> nums[] = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="2-二维数组"><a href="#2-二维数组" class="headerlink" title="2 二维数组"></a>2 二维数组</h2><h3 id="2-1-定义形式"><a href="#2-1-定义形式" class="headerlink" title="2.1 定义形式"></a>2.1 定义形式</h3><p><code>类型符 数组名[常量表达式][常量表达式];</code><br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> nums[<span class="number">3</span>][<span class="number">6</span>];</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-2-初始化"><a href="#2-2-初始化" class="headerlink" title="2.2 初始化"></a>2.2 初始化</h3><ul>
+<li><p>分行初始化</p>
+  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> nums[<span class="number">2</span>][<span class="number">3</span>] = &#123;&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;, &#123;<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>一次性初始化</p>
+  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> nums[<span class="number">2</span>][<span class="number">3</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对部分元素初始化</p>
+  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> nums[<span class="number">2</span>][<span class="number">3</span>] = &#123;&#123;<span class="number">1</span>&#125;,&#123;<span class="number">4</span>&#125;&#125;;</span><br><span class="line">或</span><br><span class="line"><span class="keyword">int</span> nums[<span class="number">2</span>][<span class="number">3</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line">或</span><br><span class="line"><span class="keyword">int</span> nums[<span class="number">2</span>][<span class="number">3</span>] = &#123;&#123;<span class="number">1</span>, <span class="number">2</span>&#125;,&#123;<span class="number">4</span>&#125;&#125;;</span><br><span class="line">或</span><br><span class="line"><span class="keyword">int</span> nums[<span class="number">3</span>][<span class="number">4</span>] = &#123;&#123;<span class="number">1</span>, <span class="number">2</span>&#125;, &#123;&#125;, &#123;<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>&#125;&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
     </div>
   </div>
   
